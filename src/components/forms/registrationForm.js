@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LockClosedIcon } from '@heroicons/react/solid';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Username from '../fields/username';
 import Password from '../fields/password';
 import Email from '../fields/email';
@@ -9,6 +9,7 @@ import ConfirmPassword from '../fields/confirmPassword';
 import { Register } from '../../services/authService';
 
 export default function RegistrationForm() {
+  const history = useHistory();
   const [formInput, setFormInput] = useState({
     username: '',
     email: '',
@@ -65,7 +66,7 @@ export default function RegistrationForm() {
       last_name: formInput.lastName,
     };
     Register(formData)
-      .then((response) => console.log(response.data))
+      .then(() => history.push('/login'))
       .catch((responseError) => {
         const errorData = responseError.response.data;
         if (Object.prototype.hasOwnProperty.call(errorData, 'email')) {
