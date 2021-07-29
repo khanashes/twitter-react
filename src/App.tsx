@@ -6,18 +6,15 @@ import RegistrationForm from './components/forms/registrationForm';
 import ErrorPage from './pages/errorPage';
 import ProtectedRoute from './services/hocFunctions/protectedRoute';
 
-function App() {
-  return (
+const App: React.FC = () => (
     <div className="App">
-      <Switch>
-        <ProtectedRoute exact path="/" component={Home} />
-        <Route path="/login" component={LoginForm} exact />
-        <Route path="/register" component={RegistrationForm} exact />
-        <Route component={ErrorPage} />
-      </Switch>
-
+        <Switch>
+            <ProtectedRoute exact path="/" component={Home} redirectPath="/login" />
+            <Route path="/login" component={LoginForm} exact />
+            <Route path="/register" component={RegistrationForm} exact />
+            <Route component={ErrorPage} />
+        </Switch>
     </div>
-  );
-}
+);
 
 export default App;
