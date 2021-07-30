@@ -105,10 +105,11 @@ export default function RegistrationForm() {
                             username={formInput.username}
                             handleFormInput={handleFormInput}
                             error={error.username}
+                            border="rounded-md"
                         />
                         <Email email={formInput.email} handleFormInput={handleFormInput} error={error.email} />
-                        <div className="flex items-center justify-between">
-                            <div>
+                        <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                            <div className="sm:col-span-3">
                                 <label htmlFor="first-name" className="sr-only">
                                     First Name
                                 </label>
@@ -119,13 +120,13 @@ export default function RegistrationForm() {
                                     autoComplete="firstName"
                                     required
                                     value={formInput.firstName}
-                                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                     placeholder="First Name"
                                     onChange={(e) => handleFormInput(e)}
                                 />
                                 <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1" />
                             </div>
-                            <div>
+                            <div className="sm:col-span-3">
                                 <label htmlFor="last-name" className="sr-only">
                                     Last Name
                                 </label>
@@ -136,7 +137,7 @@ export default function RegistrationForm() {
                                     autoComplete="lastName"
                                     required
                                     value={formInput.lastName}
-                                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                     placeholder="Last Name"
                                     onChange={(e) => handleFormInput(e)}
                                 />
@@ -147,6 +148,7 @@ export default function RegistrationForm() {
                             password={formInput.password}
                             handleFormInput={handleFormInput}
                             error={error.password}
+                            border="rounded-md"
                         />
                         <ConfirmPassword
                             confirmPassword={formInput.confirmPassword}

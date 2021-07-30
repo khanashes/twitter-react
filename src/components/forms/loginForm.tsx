@@ -13,7 +13,7 @@ export interface IFormInput {
 
 export default function LoginForm() {
     const [loginError, setLoginError] = useState<string>('');
-    const formRef = useRef<HTMLSpanElement>(null!);
+    const formRef = useRef<HTMLParagraphElement>(null!);
     const history = useHistory();
     const [formInput, setFormInput] = useState<IFormInput>({
         username: '',
@@ -72,18 +72,19 @@ export default function LoginForm() {
                             username={formInput.username}
                             handleFormInput={handleFormInput}
                             error={error.username}
+                            border="rounded-t-md"
                         />
                         <Password
                             password={formInput.password}
                             handleFormInput={handleFormInput}
                             error={error.password}
+                            border="rounded-b-md"
                         />
                     </div>
-                    <div className="flex items-center justify-between">
-                        <span
-                            ref={formRef}
-                            className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
-                        />
+                    <p ref={formRef} className="mt-2 text-sm text-red-600" id="username-error">
+                        Your password must be less than 4 characters.
+                    </p>
+                    <div className="flex justify-end">
                         <div className="text-sm">
                             <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
                                 If you do not have account then sign up!

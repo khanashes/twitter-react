@@ -4,9 +4,10 @@ interface props {
     password: string;
     handleFormInput: any;
     error: string;
+    border: string;
 }
 
-const Password: React.FC<props> = ({ password, handleFormInput, error }) => {
+const Password: React.FC<props> = ({ password, handleFormInput, error, border }) => {
     const passwordRef = useRef<HTMLInputElement>(null!);
     const passwordSpanRef = useRef<HTMLSpanElement>(null!);
     useEffect(() => {
@@ -31,7 +32,7 @@ const Password: React.FC<props> = ({ password, handleFormInput, error }) => {
                 value={password}
                 autoComplete="current-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className={`appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 ${border} focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
                 placeholder="Password"
                 onChange={handleFormInput}
             />
