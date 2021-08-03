@@ -44,14 +44,16 @@ export default function LoginForm() {
 
     const handleFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        Login(formInput)
-            .then(() => {
-                setLoginError('');
-                history.push('/');
-            })
-            .catch((responseError) => {
-                setLoginError(responseError.response.data.detail);
-            });
+        if (!error.username && !error.password) {
+            Login(formInput)
+                .then(() => {
+                    setLoginError('');
+                    history.push('/');
+                })
+                .catch((responseError) => {
+                    setLoginError(responseError.response.data.detail);
+                });
+        } else console.log('Hello');
     };
 
     return (

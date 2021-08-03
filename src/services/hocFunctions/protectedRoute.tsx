@@ -13,14 +13,6 @@ const ProtectedRoute: React.FC<IProtectedRouteProps> = ({ component, redirectPat
     ) : (
         <Redirect to={{ pathname: redirectPath }} />
     );
-    // return (
-    //     <Route
-    //         // eslint-disable-next-line react/jsx-props-no-spreading
-    //         {...rest}
-    //         // eslint-disable-next-line react/jsx-props-no-spreading
-    //         render={(props) => (isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />)}
-    //     />
-    // );
 };
 
 export default ProtectedRoute;

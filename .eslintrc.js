@@ -32,5 +32,6 @@ module.exports = {
         'jsx-a11y/label-has-associated-control': 'off',
         'jsx-a11y/label-has-for': 'off',
         'react/prop-types': 0,
+        'no-shadow': 'off',
     },
 };
