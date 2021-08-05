@@ -3,7 +3,9 @@ import React, { Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Disclosure, Menu } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { useDispatch } from 'react-redux';
 import { Logout } from '../services/authService';
+import { checkAuth } from '../features/auth/authSlice';
 
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
@@ -18,8 +20,10 @@ function classNames(...classes: any) {
 
 export default function Navbar() {
     const history = useHistory();
+    const dispatch = useDispatch();
     const handleClick = () => {
         Logout();
+        dispatch(checkAuth(false));
         history.push('/');
     };
     return (

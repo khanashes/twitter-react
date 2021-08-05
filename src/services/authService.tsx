@@ -13,7 +13,7 @@ export function Login(data = {}) {
         if (response.data.access) {
             localStorage.setItem('access', response.data.access);
             localStorage.setItem('refresh', response.data.refresh);
-            localStorage.setItem('isAuthenticated', 'true');
+            // localStorage.setItem('isAuthenticated', 'true');
         }
         return response.data;
     });
@@ -22,8 +22,9 @@ export function Register(data = {}) {
     return api.post(`${API_URL}/api/register/`, JSON.stringify(data));
 }
 export function Logout() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('access');
+    localStorage.removeItem('refresh');
+    // localStorage.removeItem('isAuthenticated');
 }
 export function GetCurrentUser(): string | null {
     return localStorage.getItem('access');
@@ -44,7 +45,7 @@ export function GetUsers() {
         const config = {
             headers: { Authorization: `Bearer ${access}` },
         };
-        return api.get(`${API_URL}/api/un-followers`, config);
+        return api.get(`${API_URL}/api/un-followers/`, config);
     }
 }
 export function GetFollowers() {
@@ -53,7 +54,7 @@ export function GetFollowers() {
         const config = {
             headers: { Authorization: `Bearer ${access}` },
         };
-        return api.get(`${API_URL}/api/followers`, config);
+        return api.get(`${API_URL}/api/followers/`, config);
     }
 }
 export function CreateFollower(id: number) {

@@ -25,26 +25,27 @@ const TweetSection = () => {
         GetTweets()
             ?.then((response) => setTweetList(response.data))
             .catch((error) => console.log(error.response.data));
-    }, [userList, followerList]);
-    useEffect(() => {
-        GetUsers()
-            ?.then((response) => {
-                setUserList(response.data);
-            })
-            .catch((error) => console.log(error.response.data));
-    }, [followerList]);
+    }, [userList.length, followerList.length]);
     useEffect(() => {
         GetFollowers()
             ?.then((response) => {
                 setFollowerList(response.data);
             })
             .catch((error) => console.log(error.response.data));
-    }, [userList]);
-
+    }, [userList.length]);
+    useEffect(() => {
+        GetUsers()
+            ?.then((response) => {
+                setUserList(response.data);
+            })
+            .catch((error) => console.log(error.response.data));
+    }, [followerList.length]);
     const handleDelete = (id: number) => {
         setFollowerList(followerList.filter((item) => item.id !== id));
         DeleteFollower(id)
-            ?.then((response) => console.log(response))
+            ?.then((response) => {
+                console.log(response);
+            })
             .catch((error) => console.log(error));
     };
     const handleCreate = (id: number) => {
@@ -72,13 +73,12 @@ const TweetSection = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-span-3 p-12 grid gap-6">
-                <div className="flex justify-center">
-                    <h2 className="text-lg font-medium text-gray-900 mt-3">Tweets</h2>
-                </div>
-
+            <div className="col-span-3 p-12 grid grid-rows-2 gap-10">
                 {tweetList.map((tweet: tweets) => (
-                    <div key={tweet.id} className="rounded overflow-hidden shadow-lg bg-yellow-100">
+                    <div
+                        key={tweet.id}
+                        className="row-span-1 justify-center rounded overflow-hidden shadow-lg bg-yellow-100"
+                    >
                         {tweet.image ? (
                             <div className="w-full">
                                 <img src={tweet.image} alt={tweet.text} className="w-full" />
